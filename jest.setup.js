@@ -24,6 +24,14 @@ jest.mock('react-native-localize', () => ({
   getLocales: jest.fn(() => [{ languageCode: 'pt', languageTag: 'pt-BR' }]),
 }));
 
+jest.mock(
+  '@env',
+  () => ({
+    SENTRY_DSN: undefined,
+  }),
+  { virtual: true },
+);
+
 jest.mock('@sentry/react-native', () => ({
   init: jest.fn(),
   reactNavigationIntegration: jest.fn(() => ({

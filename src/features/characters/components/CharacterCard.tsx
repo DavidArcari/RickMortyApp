@@ -29,7 +29,7 @@ export function CharacterCard({
       <FavoriteButton
         active={favorite}
         onPress={event => {
-          event.stopPropagation();
+          event?.stopPropagation?.();
           onToggleFavorite();
         }}
         size="sm"

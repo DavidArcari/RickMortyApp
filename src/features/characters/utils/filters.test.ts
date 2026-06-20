@@ -18,4 +18,31 @@ describe('character filters', () => {
     expect(hasActiveFilters({ species: ' ' })).toBe(false);
     expect(hasActiveFilters({ gender: 'Female' })).toBe(true);
   });
+
+  it('keeps all supported meaningful filters', () => {
+    expect(
+      cleanFilters({
+        name: ' Rick ',
+        species: ' Human ',
+        status: 'Dead',
+        gender: 'Genderless',
+      }),
+    ).toEqual({
+      name: 'Rick',
+      species: 'Human',
+      status: 'Dead',
+      gender: 'Genderless',
+    });
+  });
+
+  it('removes undefined filters', () => {
+    expect(
+      cleanFilters({
+        name: undefined,
+        species: undefined,
+        status: undefined,
+        gender: undefined,
+      }),
+    ).toEqual({});
+  });
 });

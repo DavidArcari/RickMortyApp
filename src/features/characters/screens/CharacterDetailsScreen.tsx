@@ -76,6 +76,7 @@ export function CharacterDetailsScreen({ route }: Props) {
   return (
     <Screen $bottom={insets.bottom}>
       <FlatList
+        testID="episode-list"
         data={character.episode}
         keyExtractor={item => item.id}
         ListHeaderComponent={header}

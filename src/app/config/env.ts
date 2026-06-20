@@ -1,5 +1,5 @@
 import { SENTRY_DSN } from '@env';
 
 export const env = {
-  sentryDsn: SENTRY_DSN ?? '',
+  sentryDsn: typeof SENTRY_DSN === 'undefined' ? '' : SENTRY_DSN,
 };

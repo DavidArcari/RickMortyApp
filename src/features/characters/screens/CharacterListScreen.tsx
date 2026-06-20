@@ -139,6 +139,7 @@ export function CharacterListScreen({ navigation }: Props) {
       </Header>
 
       <FlatList
+        testID="character-list"
         data={characters}
         keyExtractor={item => item.id}
         renderItem={renderItem}
