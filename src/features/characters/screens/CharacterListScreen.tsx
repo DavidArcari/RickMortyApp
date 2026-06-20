@@ -15,12 +15,7 @@ import { CHARACTERS_QUERY } from '../api/queries';
 import { CharacterCard } from '../components/CharacterCard';
 import { FilterControls } from '../components/FilterControls';
 import { PreferenceControls } from '../components/PreferenceControls';
-import type {
-  CharacterFilters,
-  CharacterSummary,
-  CharactersQueryData,
-  CharactersQueryVariables,
-} from '../types';
+import type { CharacterFilters, CharacterSummary } from '../types';
 import { cleanFilters, hasActiveFilters } from '../utils/filters';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CharacterList'>;
@@ -41,16 +36,16 @@ export function CharacterListScreen({ navigation }: Props) {
     [debouncedSearch, filters],
   );
 
-  const { data, error, loading, networkStatus, refetch, fetchMore } = useQuery<
-    CharactersQueryData,
-    CharactersQueryVariables
-  >(CHARACTERS_QUERY, {
-    variables: {
-      page: 1,
-      filter: queryFilter,
+  const { data, error, loading, networkStatus, refetch, fetchMore } = useQuery(
+    CHARACTERS_QUERY,
+    {
+      variables: {
+        page: 1,
+        filter: queryFilter,
+      },
+      notifyOnNetworkStatusChange: true,
     },
-    notifyOnNetworkStatusChange: true,
-  });
+  );
 
   const characters = data?.characters?.results ?? [];
   const nextPage = data?.characters?.info.next;

@@ -10,11 +10,7 @@ import { FavoriteButton } from '../../../shared/components/FavoriteButton';
 import { StateView } from '../../../shared/components/StateView';
 import { useFavoriteStore } from '../../../store/favoriteStore';
 import { CHARACTER_QUERY } from '../api/queries';
-import type {
-  CharacterQueryData,
-  CharacterQueryVariables,
-  Episode,
-} from '../types';
+import type { Episode } from '../types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CharacterDetails'>;
 
@@ -27,10 +23,7 @@ export function CharacterDetailsScreen({ route }: Props) {
   );
   const toggleFavorite = useFavoriteStore(state => state.toggleFavorite);
 
-  const { data, loading, error, refetch } = useQuery<
-    CharacterQueryData,
-    CharacterQueryVariables
-  >(CHARACTER_QUERY, {
+  const { data, loading, error, refetch } = useQuery(CHARACTER_QUERY, {
     variables: {
       id: route.params.characterId,
     },

@@ -1,6 +1,16 @@
 import { gql } from '@apollo/client';
+import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
+import type {
+  CharacterQueryData,
+  CharacterQueryVariables,
+  CharactersQueryData,
+  CharactersQueryVariables,
+} from '../types';
 
-export const CHARACTERS_QUERY = gql`
+export const CHARACTERS_QUERY: TypedDocumentNode<
+  CharactersQueryData,
+  CharactersQueryVariables
+> = gql`
   query Characters($page: Int!, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
       info {
@@ -27,7 +37,10 @@ export const CHARACTERS_QUERY = gql`
   }
 `;
 
-export const CHARACTER_QUERY = gql`
+export const CHARACTER_QUERY: TypedDocumentNode<
+  CharacterQueryData,
+  CharacterQueryVariables
+> = gql`
   query Character($id: ID!) {
     character(id: $id) {
       id
