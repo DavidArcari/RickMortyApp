@@ -11,6 +11,7 @@ export type AppTheme = {
     danger: string;
     warning: string;
     favorite: string;
+    favoriteMuted: string;
   };
   spacing: {
     xs: number;
@@ -37,7 +38,8 @@ export const lightTheme: AppTheme = {
     border: '#D9DDD5',
     danger: '#B42318',
     warning: '#946200',
-    favorite: '#D64B71',
+    favorite: '#F5C542',
+    favoriteMuted: '#8A948D',
   },
   spacing: {
     xs: 4,
@@ -64,7 +66,8 @@ export const darkTheme: AppTheme = {
     border: '#344139',
     danger: '#FF8A80',
     warning: '#FFD36A',
-    favorite: '#FF7FA2',
+    favorite: '#FFD36A',
+    favoriteMuted: '#AAB5AE',
   },
   spacing: lightTheme.spacing,
   radius: lightTheme.radius,

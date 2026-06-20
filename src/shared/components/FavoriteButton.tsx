@@ -1,6 +1,7 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import styled from 'styled-components/native';
+import { Star } from 'lucide-react-native';
+import styled, { useTheme } from 'styled-components/native';
 import { useTranslation } from 'react-i18next';
 
 type FavoriteButtonProps = {
@@ -15,6 +16,9 @@ export function FavoriteButton({
   size = 'md',
 }: FavoriteButtonProps) {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const iconSize = size === 'sm' ? 20 : 24;
+  const iconColor = active ? theme.colors.favorite : theme.colors.favoriteMuted;
 
   return (
     <Button
@@ -22,31 +26,26 @@ export function FavoriteButton({
       accessibilityLabel={
         active ? t('common.unfavorite') : t('common.favorite')
       }
-      $active={active}
       $size={size}
+      hitSlop={8}
       onPress={onPress}
+      style={({ pressed }) => ({ opacity: pressed ? 0.56 : 1 })}
     >
-      <ButtonText $active={active}>{active ? 'Saved' : 'Save'}</ButtonText>
+      <Star
+        size={iconSize}
+        color={iconColor}
+        fill={active ? theme.colors.favorite : 'transparent'}
+        strokeWidth={active ? 2.5 : 2}
+      />
     </Button>
   );
 }
 
-const Button = styled.Pressable<{ $active: boolean; $size: 'sm' | 'md' }>`
-  min-width: ${({ $size }) => ($size === 'sm' ? 64 : 88)}px;
-  min-height: ${({ $size }) => ($size === 'sm' ? 36 : 44)}px;
+const Button = styled.Pressable<{ $size: 'sm' | 'md' }>`
+  width: ${({ $size }) => ($size === 'sm' ? 40 : 48)}px;
+  height: ${({ $size }) => ($size === 'sm' ? 40 : 48)}px;
   align-items: center;
   justify-content: center;
-  border-radius: ${({ theme }) => theme.radius.sm}px;
-  border-width: 1px;
-  border-color: ${({ theme, $active }) =>
-    $active ? theme.colors.favorite : theme.colors.border};
-  background-color: ${({ theme, $active }) =>
-    $active ? theme.colors.favorite : theme.colors.surface};
-`;
-
-const ButtonText = styled.Text<{ $active: boolean }>`
-  color: ${({ theme, $active }) =>
-    $active ? theme.colors.background : theme.colors.text};
-  font-size: 13px;
-  font-weight: 700;
+  border-width: 0;
+  background-color: transparent;
 `;
