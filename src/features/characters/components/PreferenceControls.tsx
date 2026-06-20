@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {Chip} from '../../../shared/components/Chip';
+import { Chip } from '../../../shared/components/Chip';
 import {
   Language,
   ThemeMode,
@@ -38,7 +38,7 @@ export function PreferenceControls() {
   );
 }
 
-const Container = styled.ScrollView.attrs(({theme}) => ({
+const Container = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     gap: theme.spacing.sm,
     paddingRight: theme.spacing.md,

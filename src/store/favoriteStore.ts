@@ -1,6 +1,6 @@
-import {create} from 'zustand';
-import {createJSONStorage, persist} from 'zustand/middleware';
-import {zustandStorage} from './storage';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import { zustandStorage } from './storage';
 
 type FavoriteState = {
   favoriteIds: string[];

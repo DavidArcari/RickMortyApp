@@ -1,4 +1,4 @@
-import {cleanFilters, hasActiveFilters} from './filters';
+import { cleanFilters, hasActiveFilters } from './filters';
 
 describe('character filters', () => {
   it('removes empty string values and trims meaningful values', () => {
@@ -15,7 +15,7 @@ describe('character filters', () => {
   });
 
   it('detects active filters after cleaning', () => {
-    expect(hasActiveFilters({species: ' '})).toBe(false);
-    expect(hasActiveFilters({gender: 'Female'})).toBe(true);
+    expect(hasActiveFilters({ species: ' ' })).toBe(false);
+    expect(hasActiveFilters({ gender: 'Female' })).toBe(true);
   });
 });

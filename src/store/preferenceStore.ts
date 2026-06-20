@@ -1,8 +1,8 @@
 import i18n from 'i18next';
-import {getLocales} from 'react-native-localize';
-import {create} from 'zustand';
-import {createJSONStorage, persist} from 'zustand/middleware';
-import {zustandStorage} from './storage';
+import { getLocales } from 'react-native-localize';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import { zustandStorage } from './storage';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
 export type Language = 'pt-BR' | 'en-US';
@@ -30,15 +30,15 @@ export const usePreferenceStore = create<PreferenceState>()(
     (set, get) => ({
       themeMode: 'system',
       language: 'pt-BR',
-      setThemeMode: themeMode => set({themeMode}),
+      setThemeMode: themeMode => set({ themeMode }),
       setLanguage: language => {
         i18n.changeLanguage(language).catch(() => undefined);
-        set({language});
+        set({ language });
       },
       hydrateLocale: () => {
         const language = get().language ?? getDeviceLanguage();
         i18n.changeLanguage(language).catch(() => undefined);
-        set({language});
+        set({ language });
       },
     }),
     {

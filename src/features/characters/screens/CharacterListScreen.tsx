@@ -1,32 +1,32 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import {ActivityIndicator, FlatList, RefreshControl} from 'react-native';
-import {NetworkStatus} from '@apollo/client';
-import {useQuery} from '@apollo/client/react';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useTranslation} from 'react-i18next';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styled, {useTheme} from 'styled-components/native';
-import type {RootStackParamList} from '../../../app/navigation/types';
-import {Chip} from '../../../shared/components/Chip';
-import {StateView} from '../../../shared/components/StateView';
-import {useDebouncedValue} from '../../../shared/hooks/useDebouncedValue';
-import {useFavoriteStore} from '../../../store/favoriteStore';
-import {CHARACTERS_QUERY} from '../api/queries';
-import {CharacterCard} from '../components/CharacterCard';
-import {FilterControls} from '../components/FilterControls';
-import {PreferenceControls} from '../components/PreferenceControls';
+import React, { useCallback, useMemo, useState } from 'react';
+import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { NetworkStatus } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import styled, { useTheme } from 'styled-components/native';
+import type { RootStackParamList } from '../../../app/navigation/types';
+import { Chip } from '../../../shared/components/Chip';
+import { StateView } from '../../../shared/components/StateView';
+import { useDebouncedValue } from '../../../shared/hooks/useDebouncedValue';
+import { useFavoriteStore } from '../../../store/favoriteStore';
+import { CHARACTERS_QUERY } from '../api/queries';
+import { CharacterCard } from '../components/CharacterCard';
+import { FilterControls } from '../components/FilterControls';
+import { PreferenceControls } from '../components/PreferenceControls';
 import type {
   CharacterFilters,
   CharacterSummary,
   CharactersQueryData,
   CharactersQueryVariables,
 } from '../types';
-import {cleanFilters, hasActiveFilters} from '../utils/filters';
+import { cleanFilters, hasActiveFilters } from '../utils/filters';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CharacterList'>;
 
-export function CharacterListScreen({navigation}: Props) {
-  const {t} = useTranslation();
+export function CharacterListScreen({ navigation }: Props) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const [search, setSearch] = useState('');
@@ -37,11 +37,11 @@ export function CharacterListScreen({navigation}: Props) {
   const toggleFavorite = useFavoriteStore(state => state.toggleFavorite);
 
   const queryFilter = useMemo(
-    () => cleanFilters({...filters, name: debouncedSearch}),
+    () => cleanFilters({ ...filters, name: debouncedSearch }),
     [debouncedSearch, filters],
   );
 
-  const {data, error, loading, networkStatus, refetch, fetchMore} = useQuery<
+  const { data, error, loading, networkStatus, refetch, fetchMore } = useQuery<
     CharactersQueryData,
     CharactersQueryVariables
   >(CHARACTERS_QUERY, {
@@ -83,7 +83,7 @@ export function CharacterListScreen({navigation}: Props) {
   }, [fetchMore, loadingMore, nextPage, queryFilter]);
 
   const handleRefresh = useCallback(() => {
-    refetch({page: 1, filter: queryFilter}).catch(() => undefined);
+    refetch({ page: 1, filter: queryFilter }).catch(() => undefined);
   }, [queryFilter, refetch]);
 
   const clearFilters = () => {
@@ -91,12 +91,12 @@ export function CharacterListScreen({navigation}: Props) {
     setFilters({});
   };
 
-  const renderItem = ({item}: {item: CharacterSummary}) => (
+  const renderItem = ({ item }: { item: CharacterSummary }) => (
     <CharacterCard
       character={item}
       favorite={favoriteSet.has(item.id)}
       onPress={() =>
-        navigation.navigate('CharacterDetails', {characterId: item.id})
+        navigation.navigate('CharacterDetails', { characterId: item.id })
       }
       onToggleFavorite={() => toggleFavorite(item.id)}
     />
@@ -175,39 +175,39 @@ export function CharacterListScreen({navigation}: Props) {
   );
 }
 
-const Screen = styled.View<{$top: number}>`
+const Screen = styled.View<{ $top: number }>`
   flex: 1;
-  background-color: ${({theme}) => theme.colors.background};
-  padding-top: ${({$top}) => $top}px;
+  background-color: ${({ theme }) => theme.colors.background};
+  padding-top: ${({ $top }) => $top}px;
 `;
 
 const Header = styled.View`
-  gap: ${({theme}) => theme.spacing.md}px;
+  gap: ${({ theme }) => theme.spacing.md}px;
   border-bottom-width: 1px;
-  border-bottom-color: ${({theme}) => theme.colors.border};
-  background-color: ${({theme}) => theme.colors.background};
-  padding: ${({theme}) => theme.spacing.md}px;
+  border-bottom-color: ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.background};
+  padding: ${({ theme }) => theme.spacing.md}px;
 `;
 
 const Title = styled.Text`
-  color: ${({theme}) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 30px;
   font-weight: 900;
 `;
 
 const SearchInput = styled.TextInput`
   min-height: 48px;
-  border-radius: ${({theme}) => theme.radius.md}px;
+  border-radius: ${({ theme }) => theme.radius.md}px;
   border-width: 1px;
-  border-color: ${({theme}) => theme.colors.border};
-  background-color: ${({theme}) => theme.colors.surface};
-  color: ${({theme}) => theme.colors.text};
-  padding: 0 ${({theme}) => theme.spacing.md}px;
+  border-color: ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.text};
+  padding: 0 ${({ theme }) => theme.spacing.md}px;
 `;
 
 const Toolbar = styled.View`
   flex-direction: row;
-  gap: ${({theme}) => theme.spacing.sm}px;
+  gap: ${({ theme }) => theme.spacing.sm}px;
 `;
 
 const Footer = styled.View`

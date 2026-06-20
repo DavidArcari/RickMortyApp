@@ -1,6 +1,6 @@
 import React from 'react';
-import {AppProviders} from './src/app/AppProviders';
-import {RootNavigator} from './src/app/navigation/RootNavigator';
+import { AppProviders } from './src/app/AppProviders';
+import { RootNavigator } from './src/app/navigation/RootNavigator';
 
 function App() {
   return (

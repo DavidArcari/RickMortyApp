@@ -1,15 +1,15 @@
-import React, {PropsWithChildren, useEffect, useMemo} from 'react';
-import {ApolloProvider} from '@apollo/client/react';
-import {StatusBar, useColorScheme} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {ThemeProvider as StyledThemeProvider} from 'styled-components/native';
-import {apolloClient} from './apollo/client';
+import React, { PropsWithChildren, useEffect, useMemo } from 'react';
+import { ApolloProvider } from '@apollo/client/react';
+import { StatusBar, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components/native';
+import { apolloClient } from './apollo/client';
 import './i18n';
-import {setupSentry} from './sentry/setupSentry';
-import {darkTheme, lightTheme} from './theme/theme';
-import {usePreferenceStore} from '../store/preferenceStore';
+import { setupSentry } from './sentry/setupSentry';
+import { darkTheme, lightTheme } from './theme/theme';
+import { usePreferenceStore } from '../store/preferenceStore';
 
-export function AppProviders({children}: PropsWithChildren) {
+export function AppProviders({ children }: PropsWithChildren) {
   const colorScheme = useColorScheme();
   const themeMode = usePreferenceStore(state => state.themeMode);
   const hydrateLocale = usePreferenceStore(state => state.hydrateLocale);

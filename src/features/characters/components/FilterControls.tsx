@@ -1,8 +1,12 @@
 import React from 'react';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components/native';
-import {Chip} from '../../../shared/components/Chip';
-import type {CharacterFilters, CharacterGender, CharacterStatus} from '../types';
+import { Chip } from '../../../shared/components/Chip';
+import type {
+  CharacterFilters,
+  CharacterGender,
+  CharacterStatus,
+} from '../types';
 
 type FilterControlsProps = {
   filters: CharacterFilters;
@@ -24,8 +28,8 @@ const genderOptions: Array<CharacterGender | undefined> = [
   'unknown',
 ];
 
-export function FilterControls({filters, onChange}: FilterControlsProps) {
-  const {t} = useTranslation();
+export function FilterControls({ filters, onChange }: FilterControlsProps) {
+  const { t } = useTranslation();
 
   const statusLabel = (status?: CharacterStatus) => {
     if (!status) {
@@ -63,7 +67,7 @@ export function FilterControls({filters, onChange}: FilterControlsProps) {
             key={status ?? 'all-status'}
             label={statusLabel(status)}
             selected={filters.status === status}
-            onPress={() => onChange({...filters, status})}
+            onPress={() => onChange({ ...filters, status })}
           />
         ))}
       </ChipsRow>
@@ -75,7 +79,7 @@ export function FilterControls({filters, onChange}: FilterControlsProps) {
             key={gender ?? 'all-gender'}
             label={genderLabel(gender)}
             selected={filters.gender === gender}
-            onPress={() => onChange({...filters, gender})}
+            onPress={() => onChange({ ...filters, gender })}
           />
         ))}
       </ChipsRow>
@@ -85,23 +89,23 @@ export function FilterControls({filters, onChange}: FilterControlsProps) {
         placeholder={t('list.speciesPlaceholder')}
         placeholderTextColor="#7A847D"
         value={filters.species ?? ''}
-        onChangeText={species => onChange({...filters, species})}
+        onChangeText={species => onChange({ ...filters, species })}
       />
     </Container>
   );
 }
 
 const Container = styled.View`
-  gap: ${({theme}) => theme.spacing.sm}px;
+  gap: ${({ theme }) => theme.spacing.sm}px;
 `;
 
 const SectionTitle = styled.Text`
-  color: ${({theme}) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 13px;
   font-weight: 800;
 `;
 
-const ChipsRow = styled.ScrollView.attrs(({theme}) => ({
+const ChipsRow = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     gap: theme.spacing.sm,
     paddingRight: theme.spacing.md,
@@ -110,10 +114,10 @@ const ChipsRow = styled.ScrollView.attrs(({theme}) => ({
 
 const SpeciesInput = styled.TextInput`
   min-height: 44px;
-  border-radius: ${({theme}) => theme.radius.sm}px;
+  border-radius: ${({ theme }) => theme.radius.sm}px;
   border-width: 1px;
-  border-color: ${({theme}) => theme.colors.border};
-  background-color: ${({theme}) => theme.colors.surface};
-  color: ${({theme}) => theme.colors.text};
-  padding: 0 ${({theme}) => theme.spacing.md}px;
+  border-color: ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.text};
+  padding: 0 ${({ theme }) => theme.spacing.md}px;
 `;

@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useTheme} from 'styled-components/native';
-import {routingInstrumentation} from '../sentry/setupSentry';
-import {CharacterDetailsScreen} from '../../features/characters/screens/CharacterDetailsScreen';
-import {CharacterListScreen} from '../../features/characters/screens/CharacterListScreen';
-import type {RootStackParamList} from './types';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useTheme } from 'styled-components/native';
+import { routingInstrumentation } from '../sentry/setupSentry';
+import { CharacterDetailsScreen } from '../../features/characters/screens/CharacterDetailsScreen';
+import { CharacterListScreen } from '../../features/characters/screens/CharacterListScreen';
+import type { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -38,27 +38,29 @@ export function RootNavigator() {
           notification: theme.colors.favorite,
         },
         fonts: {
-          regular: {fontFamily: 'System', fontWeight: '400'},
-          medium: {fontFamily: 'System', fontWeight: '500'},
-          bold: {fontFamily: 'System', fontWeight: '700'},
-          heavy: {fontFamily: 'System', fontWeight: '800'},
+          regular: { fontFamily: 'System', fontWeight: '400' },
+          medium: { fontFamily: 'System', fontWeight: '500' },
+          bold: { fontFamily: 'System', fontWeight: '700' },
+          heavy: { fontFamily: 'System', fontWeight: '800' },
         },
-      }}>
+      }}
+    >
       <Stack.Navigator
         screenOptions={{
           headerTintColor: theme.colors.text,
-          headerStyle: {backgroundColor: theme.colors.surface},
-          contentStyle: {backgroundColor: theme.colors.background},
-        }}>
+          headerStyle: { backgroundColor: theme.colors.surface },
+          contentStyle: { backgroundColor: theme.colors.background },
+        }}
+      >
         <Stack.Screen
           name="CharacterList"
           component={CharacterListScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="CharacterDetails"
           component={CharacterDetailsScreen}
-          options={{title: ''}}
+          options={{ title: '' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

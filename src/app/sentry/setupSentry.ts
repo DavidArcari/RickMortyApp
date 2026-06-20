@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/react-native';
-import {env} from '../config/env';
+import { env } from '../config/env';
 
 let initialized = false;
 

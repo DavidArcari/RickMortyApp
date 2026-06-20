@@ -17,7 +17,8 @@ export const resources = {
         filters: 'Filtros',
         clear: 'Limpar',
         emptyTitle: 'Nenhum personagem encontrado',
-        emptyDescription: 'Ajuste a busca ou os filtros para tentar outra combinação.',
+        emptyDescription:
+          'Ajuste a busca ou os filtros para tentar outra combinação.',
         errorTitle: 'Nao foi possivel carregar os personagens',
         loadMore: 'Carregar mais',
         speciesPlaceholder: 'Especie',
@@ -61,7 +62,8 @@ export const resources = {
         filters: 'Filters',
         clear: 'Clear',
         emptyTitle: 'No characters found',
-        emptyDescription: 'Adjust search or filters to try another combination.',
+        emptyDescription:
+          'Adjust search or filters to try another combination.',
         errorTitle: 'Could not load characters',
         loadMore: 'Load more',
         speciesPlaceholder: 'Species',
@@ -89,4 +91,4 @@ export const resources = {
   },
 } as const;
 
-export type DefaultResources = typeof resources['pt-BR']['translation'];
+export type DefaultResources = (typeof resources)['pt-BR']['translation'];

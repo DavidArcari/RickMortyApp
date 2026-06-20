@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import type {StateStorage} from 'zustand/middleware';
+import type { StateStorage } from 'zustand/middleware';
 
 export const zustandStorage: StateStorage = {
   getItem: name => AsyncStorage.getItem(name),

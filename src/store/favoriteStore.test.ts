@@ -1,8 +1,8 @@
-import {useFavoriteStore} from './favoriteStore';
+import { useFavoriteStore } from './favoriteStore';
 
 describe('favoriteStore', () => {
   beforeEach(() => {
-    useFavoriteStore.setState({favoriteIds: []});
+    useFavoriteStore.setState({ favoriteIds: [] });
   });
 
   it('toggles a character as favorite', () => {
