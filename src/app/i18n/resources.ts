@@ -44,6 +44,15 @@ export const resources = {
         episodes: 'Episodios',
         errorTitle: 'Nao foi possivel carregar o personagem',
       },
+      preferences: {
+        themeLabel: 'Tema',
+        languageLabel: 'Idioma',
+        theme: {
+          system: 'Sistema',
+          light: 'Claro',
+          dark: 'Escuro',
+        },
+      },
     },
   },
   'en-US': {
@@ -90,6 +99,15 @@ export const resources = {
         type: 'Type',
         episodes: 'Episodes',
         errorTitle: 'Could not load character',
+      },
+      preferences: {
+        themeLabel: 'Theme',
+        languageLabel: 'Language',
+        theme: {
+          system: 'System',
+          light: 'Light',
+          dark: 'Dark',
+        },
       },
     },
   },
