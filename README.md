@@ -12,7 +12,7 @@ App React Native para consultar personagens da API publica GraphQL do Rick and M
 - i18next com PT-BR e EN-US
 - Sentry opcional, integrado ao React Navigation
 - lucide-react-native + react-native-svg para icones
-- Jest + Testing Library para testes
+- Jest + Testing Library com cobertura minima configurada
 
 ## Funcionalidades
 
@@ -95,8 +95,16 @@ npm run ios
 npm run typecheck
 npm run lint
 npm test
+npm test -- --coverage --runInBand
 npm run format:check
 ```
+
+O coverage possui thresholds globais configurados no Jest:
+
+- Statements: 80%
+- Branches: 70%
+- Functions: 80%
+- Lines: 80%
 
 Para formatar o projeto:
 
