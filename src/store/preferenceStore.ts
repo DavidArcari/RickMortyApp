@@ -15,21 +15,17 @@ type PreferenceState = {
   hydrateLocale: () => void;
 };
 
-const supportedLanguages: Language[] = ['pt-BR', 'en-US'];
-
 function getDeviceLanguage(): Language {
-  const languageTag = getLocales()[0]?.languageTag;
+  const languageCode = getLocales()[0]?.languageCode;
 
-  return supportedLanguages.includes(languageTag as Language)
-    ? (languageTag as Language)
-    : 'pt-BR';
+  return languageCode === 'pt' ? 'pt-BR' : 'en-US';
 }
 
 export const usePreferenceStore = create<PreferenceState>()(
   persist(
     (set, get) => ({
       themeMode: 'system',
-      language: 'pt-BR',
+      language: getDeviceLanguage(),
       setThemeMode: themeMode => set({ themeMode }),
       setLanguage: language => {
         i18n.changeLanguage(language).catch(() => undefined);

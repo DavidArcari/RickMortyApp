@@ -21,7 +21,7 @@ jest.mock('@react-native-async-storage/async-storage', () => {
 });
 
 jest.mock('react-native-localize', () => ({
-  getLocales: jest.fn(() => [{ languageTag: 'pt-BR' }]),
+  getLocales: jest.fn(() => [{ languageCode: 'pt', languageTag: 'pt-BR' }]),
 }));
 
 jest.mock('@sentry/react-native', () => ({
