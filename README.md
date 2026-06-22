@@ -51,7 +51,7 @@ No macOS/Linux:
 cp .env.example .env
 ```
 
-O Sentry e opcional. Para habilitar, preencha:
+O Sentry é opcional. Para habilitar, preencha:
 
 ```env
 SENTRY_DSN=
